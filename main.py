@@ -53,6 +53,20 @@ class KBTest(unittest.TestCase):
         self.assertEqual(str(answer[3]), "?X : pyramid2, ?Y : green")
         self.assertEqual(str(answer[4]), "?X : pyramid3, ?Y : red")
         self.assertEqual(str(answer[5]), "?X : pyramid4, ?Y : red")
+
+    def test6(self):
+        ask1 = read.parse_input("fact: (color bigbox blue)")
+        print(' Asking if', ask1)
+        answer = self.KB.kb_ask(ask1)
+        self.assertFalse(answer)
+
+    def test6(self):
+        assert1 = read.parse_input("fact: (color bigbox red)")
+        print(' Asserting ', assert1)
+        self.KB.kb_assert(assert1)
+        print(' Asking if', assert1)
+        answer = self.KB.kb_ask(assert1)
+        self.assertEqual(len(answer),1)
         
 
 if __name__ == '__main__':
